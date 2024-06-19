@@ -1,0 +1,37 @@
+country_decisions = {
+    morocco_reconquista = {
+        color = { 153 153 255 }
+
+        potential = {
+            tag = MOR
+            NOT = { has_country_flag = had_war_with_the_spanish}
+
+            OR = {
+                is_in_war = {
+                    attacker_leader = MOR
+                    defender_leader = CAS
+                }
+                is_in_war = {
+                    attacker_leader = MOR
+                    defender_leader = SPA
+                }
+            }
+        }
+        
+        allow = {
+            
+        }
+
+        effect = {
+            country_event = {
+                id = catholic_war.1
+            }
+            set_country_flag = had_war_with_the_spanish
+        }
+
+        ai_will_do = {
+	        factor = 1
+        }
+
+    }
+}

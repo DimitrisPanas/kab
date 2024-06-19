@@ -1,0 +1,77 @@
+namespace = catholic_war
+
+country_event = {
+    id = catholic_war.1
+    title = catholic_war.1.t
+    desc = catholic_war.1.d
+    picture = BATTLE_eventPicture
+
+    is_triggered_only = yes
+
+    option = {
+        name = "catholic_war.1.a"
+        add_country_modifier = { 
+            name = combat_abillity
+            duration = -1  
+        }
+    }
+}
+
+country_event = {
+    id = catholic_war.2
+    title = catholic_war.2.t
+    desc = catholic_war.2.d
+    picture = BATTLE_eventPicture
+
+    trigger = {
+        tag = MOR
+        has_country_modifier = combat_abillity
+        OR = {    
+            has_won_war_against = {
+                who = CAS 
+                max_years_since = 1
+            }
+            has_won_war_against = {
+                who = SPA
+                max_years_since = 1
+            }
+        }
+    }
+
+
+    option = {
+        name = "catholic_war.2.a"
+        remove_country_modifier = combat_abillity
+        add_prestige = 30 
+    }
+
+}
+
+country_event = {
+    id = catholic_war.3
+    title = catholic_war.3.t
+    desc = catholic_war.3.d
+    picture = BATTLE_eventPicture
+    hidden = yes
+    trigger = {
+        OR = {
+            tag = CAS
+            tag = SPA
+        }
+        MOR = {
+            has_country_modifier = combat_abillity
+        }
+        has_won_war_against = {
+            who = MOR
+            max_years_since = 1
+        }
+    }
+    option = {
+        name = "catholic_war.3.a"
+        MOR = {
+            remove_country_modifier = combat_abillity
+        }
+    }
+    
+}
+
